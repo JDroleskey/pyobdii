@@ -7,28 +7,28 @@ def scanSerial():
     for i in range(256):
       try: #scan standart ttyS*
         s = serial.Serial(i)
-        available.append(s.portstr)
+        available.append(str(s.portstr))
         s.close()   # explicit close 'cause of delayed GC in java
       except serial.SerialException:
         pass
     for i in range(256):
       try: #scan USB ttyACM
         s = serial.Serial("/dev/ttyACM"+str(i))
-        available.append(s.portstr)
+        available.append(str(s.portstr))
         s.close()   # explicit close 'cause of delayed GC in java
       except serial.SerialException:
         pass
     for i in range(256):
       try:
         s = serial.Serial("/dev/ttyUSB"+str(i))
-        available.append(s.portstr)
+        available.append(str(s.portstr))
         s.close()   # explicit close 'cause of delayed GC in java
       except serial.SerialException:
         pass
     for i in range(256):
       try:
         s = serial.Serial("/dev/ttyd"+str(i))
-        available.append(s.portstr)
+        available.append(str(s.portstr))
         s.close()   # explicit close 'cause of delayed GC in java
       except serial.SerialException:
         pass
@@ -40,7 +40,7 @@ def scanSerial():
         extension = hex(i).replace("0x","", 1)
         try:
           s = serial.Serial("/dev/tty.usbmodem"+extension)
-          available.append(s.portstr)
+          available.append(str(s.portstr))
           s.close()
         except serial.SerialException:
           pass 

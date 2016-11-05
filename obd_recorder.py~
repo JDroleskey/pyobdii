@@ -13,7 +13,7 @@ class OBD_Recorder():
     def __init__(self, path, log_items):
         self.port = None
         self.sensorlist = []
-        filename = path+"log.txt"
+        filename = path + 'log/log_' + str(time.localtime()[0]) + str(time.localtime()[1]) + str(time.localtime()[2]) + str(time.localtime()[3]) + str(time.localtime()[4]) + str(time.localtime()[5]) + '.txt'
         self.log_file = open(filename, "w", 128)
         self.log_file.write("Time,RPM,MPH,Throttle,Load,Gear\n");
 
